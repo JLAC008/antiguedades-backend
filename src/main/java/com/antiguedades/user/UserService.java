@@ -5,6 +5,7 @@ import com.antiguedades.exception.ResourceNotFoundException;
 import com.antiguedades.user.dto.CreateUserRequest;
 import com.antiguedades.user.dto.UpdateUserRequest;
 import com.antiguedades.user.dto.UserResponse;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +17,11 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<UserResponse> getAllUsers() {
@@ -34,7 +37,7 @@ public class UserService {
         }
         AppUser user = new AppUser(
             request.email().toLowerCase().trim(),
-            request.password(),
+            passwordEncoder.encode(request.password()),
             request.role(),
             request.name().trim()
         );
@@ -56,7 +59,7 @@ public class UserService {
             user.setEmail(request.email().toLowerCase().trim());
         }
         if (request.password() != null && !request.password().isBlank()) {
-            user.setPassword(request.password());
+            user.setPassword(passwordEncoder.encode(request.password()));
         }
         if (request.role() != null) user.setRole(request.role());
 
