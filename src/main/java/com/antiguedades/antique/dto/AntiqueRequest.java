@@ -34,6 +34,6 @@ public record AntiqueRequest(
     @Size(max = 100) String paperType,
     @Size(max = 100) String paperFormat,
     Integer paperWeight,
-    List<String> images
+    @Size(max = 5, message = "Máximo 5 imágenes por pieza") List<String> images
 ) {
 }
