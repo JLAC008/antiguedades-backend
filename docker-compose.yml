@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: antiguedades
+      POSTGRES_USER: antiguedades
+      POSTGRES_PASSWORD: antiguedades_secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U antiguedades"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/antiguedades
+      SPRING_DATASOURCE_USERNAME: antiguedades
+      SPRING_DATASOURCE_PASSWORD: antiguedades_secret
+      UPLOAD_DIR: /app/uploads
+      JWT_SECRET: ${JWT_SECRET:-base64-encoded-256-bit-secret-for-jwt-signing-at-least-32-chars}
+      CORS_ORIGINS: "*"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - uploads:/app/uploads
+
+volumes:
+  pgdata:
+  uploads:
