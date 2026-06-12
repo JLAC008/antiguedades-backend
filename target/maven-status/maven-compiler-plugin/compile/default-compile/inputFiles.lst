@@ -28,6 +28,8 @@ C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\security\JwtAuthenticationFilter.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\security\JwtTokenProvider.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\security\JwtUserDetails.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\storage\FileStorage.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\storage\LocalFileStorage.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\upload\FileUploadController.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\user\AppUser.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-back\src\main\java\com\antiguedades\user\dto\CreateUserRequest.java

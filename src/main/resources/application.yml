@@ -5,9 +5,9 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/antiguedades}
-    username: ${SPRING_DATASOURCE_USERNAME:antiguedades}
-    password: ${SPRING_DATASOURCE_PASSWORD:antiguedades_secret}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     hikari:
       maximum-pool-size: 10
   jpa:
@@ -24,12 +24,12 @@ spring:
 
 app:
   upload:
-    dir: ${UPLOAD_DIR:./uploads}
+    dir: ${UPLOAD_DIR}
   admin:
-    username: ${ADMIN_USERNAME:admin}
-    password: ${ADMIN_PASSWORD:admin123}
+    username: ${ADMIN_USERNAME}
+    password: ${ADMIN_PASSWORD}
   jwt:
-    secret: ${JWT_SECRET:base64-encoded-256-bit-secret-for-jwt-signing-at-least-32-chars}
+    secret: ${JWT_SECRET}
     expiration-ms: 86400000
   cors:
     allowed-origins: ${CORS_ORIGINS:http://localhost:4200}

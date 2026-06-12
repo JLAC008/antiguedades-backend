@@ -22,6 +22,7 @@ com\antiguedades\user\UserRole.class
 com\antiguedades\antique\Antique.class
 com\antiguedades\upload\FileUploadController.class
 com\antiguedades\exception\ResourceNotFoundException.class
+com\antiguedades\storage\LocalFileStorage.class
 com\antiguedades\config\SecurityConfig.class
 com\antiguedades\catalog\CatalogController.class
 com\antiguedades\config\JacksonConfig.class
@@ -35,5 +36,6 @@ com\antiguedades\catalog\dto\CatalogRequest.class
 com\antiguedades\AntiguedadesApplication.class
 com\antiguedades\antique\AntiqueController.class
 com\antiguedades\security\JwtAuthenticationFilter.class
+com\antiguedades\storage\FileStorage.class
 com\antiguedades\antique\AntiqueRepository.class
 com\antiguedades\security\JwtUserDetails.class
