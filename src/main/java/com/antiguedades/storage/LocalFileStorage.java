@@ -30,6 +30,9 @@ public class LocalFileStorage implements FileStorage {
         if (file.isEmpty()) {
             throw new IllegalArgumentException("El archivo está vacío");
         }
+        if (file.getSize() > 2 * 1024 * 1024) {
+            throw new IllegalArgumentException("El archivo supera el tamaño máximo de 2 MB");
+        }
         try {
             String datePath = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
             Path dir = this.uploadDir.resolve(datePath);
