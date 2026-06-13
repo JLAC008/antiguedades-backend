@@ -52,25 +52,4 @@ public class LocalFileStorage implements FileStorage {
         }
     }
 
-    @Override
-    public void delete(String url) {
-        if (url == null || !url.startsWith("/uploads/")) return;
-        String relativePath = url.substring("/uploads/".length());
-        Path file = this.uploadDir.resolve(relativePath).normalize();
-        if (file.startsWith(this.uploadDir)) {
-            try {
-                Files.deleteIfExists(file);
-                Path parent = file.getParent();
-                while (parent != null && !parent.equals(this.uploadDir)) {
-                    if (Files.list(parent).findAny().isEmpty()) {
-                        Files.delete(parent);
-                        parent = parent.getParent();
-                    } else {
-                        break;
-                    }
-                }
-            } catch (IOException ignored) {
-            }
-        }
-    }
 }

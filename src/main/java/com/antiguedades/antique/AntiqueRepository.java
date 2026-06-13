@@ -12,9 +12,6 @@ public interface AntiqueRepository extends JpaRepository<Antique, UUID> {
     @Query("SELECT a FROM Antique a ORDER BY a.createdAt DESC")
     List<Antique> findAllOrderByCreatedAtDesc();
 
-    @Query("SELECT a FROM Antique a WHERE a.type = :type ORDER BY a.createdAt DESC")
-    List<Antique> findByTypeOrderByCreatedAtDesc(@Param("type") AntiqueType type);
-
     @Query("SELECT a FROM Antique a WHERE " +
            "(:search IS NULL OR LOWER(a.name) LIKE LOWER(CONCAT('%', :search, '%')) " +
            "OR LOWER(a.description) LIKE LOWER(CONCAT('%', :search, '%')) " +

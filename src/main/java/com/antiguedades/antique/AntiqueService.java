@@ -90,10 +90,6 @@ public class AntiqueService {
         return new CountsResponse(antiguedad, papeleria);
     }
 
-    public long getCountByType(AntiqueType type) {
-        return antiqueRepository.countByType(type);
-    }
-
     private void applyRequest(Antique antique, AntiqueRequest request) {
         antique.setName(request.name());
         antique.setType(request.type());

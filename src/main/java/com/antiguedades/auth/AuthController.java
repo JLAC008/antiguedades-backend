@@ -2,7 +2,6 @@ package com.antiguedades.auth;
 
 import com.antiguedades.auth.dto.LoginRequest;
 import com.antiguedades.auth.dto.LoginResponse;
-import com.antiguedades.exception.BusinessException;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
