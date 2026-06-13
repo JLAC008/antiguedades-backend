@@ -15,8 +15,13 @@ C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedad
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CatalogController.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CatalogRepository.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CatalogService.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\Category.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CategoryController.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CategoryRepository.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CategoryService.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\dto\CatalogRequest.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\dto\CatalogResponse.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\dto\CategoryResponse.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\DotenvEnvironmentPostProcessor.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\FlywayConfig.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\JacksonConfig.java
