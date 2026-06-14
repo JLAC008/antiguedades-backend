@@ -22,6 +22,11 @@ C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedad
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\dto\CatalogRequest.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\dto\CatalogResponse.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\dto\CategoryResponse.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\condition\Condition.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\condition\ConditionController.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\condition\ConditionRepository.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\condition\ConditionService.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\condition\dto\ConditionResponse.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\DotenvEnvironmentPostProcessor.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\FlywayConfig.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\JacksonConfig.java
