@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(readOnly = true)
 public class UserService {
+    private static final String SUPERUSER_EMAIL = "superusuario@gmail.com";
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -26,6 +28,7 @@ public class UserService {
 
     public List<UserResponse> getAllUsers() {
         return userRepository.findAll().stream()
+            .filter(user -> !isSuperuser(user))
             .map(this::toResponse)
             .collect(Collectors.toList());
     }
@@ -49,6 +52,9 @@ public class UserService {
     public UserResponse updateUser(UUID id, UpdateUserRequest request) {
         AppUser user = userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+        if (isSuperuser(user)) {
+            throw new BusinessException("El superusuario solo se puede modificar desde base de datos");
+        }
 
         if (request.name() != null) user.setName(request.name().trim());
         if (request.email() != null) {
@@ -69,13 +75,19 @@ public class UserService {
 
     @Transactional
     public void deleteUser(UUID id) {
-        if (!userRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Usuario no encontrado");
+        AppUser user = userRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+        if (isSuperuser(user)) {
+            throw new BusinessException("El superusuario solo se puede eliminar desde base de datos");
         }
-        userRepository.deleteById(id);
+        userRepository.delete(user);
     }
 
     private UserResponse toResponse(AppUser user) {
         return new UserResponse(user.getId(), user.getEmail(), user.getRole(), user.getName(), user.getCreatedAt());
+    }
+
+    private boolean isSuperuser(AppUser user) {
+        return user.getEmail() != null && user.getEmail().equalsIgnoreCase(SUPERUSER_EMAIL);
     }
 }
