@@ -32,7 +32,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Map<String, Object>> handleDataIntegrity(DataIntegrityViolationException ex) {
-        return buildResponse(HttpStatus.CONFLICT, "Ya existe una pieza con ese nombre.");
+        String detail = ex.getMostSpecificCause().getMessage();
+        if (detail != null && detail.contains("uk_antiques_non_repeatable_name")) {
+            return buildResponse(HttpStatus.CONFLICT, "Ya existe una pieza con ese nombre.");
+        }
+        return buildResponse(HttpStatus.CONFLICT, "No se han podido guardar los datos porque entran en conflicto con otro registro.");
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

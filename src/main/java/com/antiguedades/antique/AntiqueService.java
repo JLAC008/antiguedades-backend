@@ -53,7 +53,7 @@ public class AntiqueService {
 
     @Transactional
     public AntiqueResponse create(AntiqueRequest request, String createdBy) {
-        validateUniqueName(request.name(), null);
+        validateUniqueName(request.name(), request.allowDuplicateName(), null);
         Antique antique = new Antique();
         applyRequest(antique, request);
         if (request.catalogId() != null && !request.catalogId().isBlank()) {
@@ -68,7 +68,7 @@ public class AntiqueService {
     public AntiqueResponse update(UUID id, AntiqueRequest request) {
         Antique antique = antiqueRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Pieza no encontrada"));
-        validateUniqueName(request.name(), id);
+        validateUniqueName(request.name(), request.allowDuplicateName(), id);
         applyRequest(antique, request);
         if (request.catalogId() != null && !request.catalogId().isBlank()) {
             antique.setCatalogId(UUID.fromString(request.catalogId()));
@@ -95,6 +95,7 @@ public class AntiqueService {
 
     private void applyRequest(Antique antique, AntiqueRequest request) {
         antique.setName(request.name().trim());
+        antique.setAllowDuplicateName(Boolean.TRUE.equals(request.allowDuplicateName()));
         antique.setType(request.type());
         antique.setSubcategory(request.subcategory());
         antique.setDetail(request.detail());
@@ -121,7 +122,10 @@ public class AntiqueService {
         antique.setImages(request.images() != null ? request.images() : List.of());
     }
 
-    private void validateUniqueName(String name, UUID currentId) {
+    private void validateUniqueName(String name, Boolean allowDuplicateName, UUID currentId) {
+        if (Boolean.TRUE.equals(allowDuplicateName)) {
+            return;
+        }
         String normalizedName = name.trim();
         boolean duplicate = currentId == null
             ? antiqueRepository.existsByNameIgnoreCase(normalizedName)
@@ -139,7 +143,7 @@ public class AntiqueService {
                 .orElse(null)
             : null;
         return new AntiqueResponse(
-            antique.getId(), antique.getCatalogId(), antique.getName(), antique.getType(),
+            antique.getId(), antique.getCatalogId(), antique.getName(), antique.isAllowDuplicateName(), antique.getType(),
             antique.getSubcategory(), antique.getDetail(), antique.getCountry(), antique.getRegion(), antique.getElement(),
             antique.getTitle(), antique.getAuthor(), antique.getEditor(), antique.getImprenta(),
             antique.getEdition(), antique.getSignature(), antique.getTheme(), antique.getCentury(),

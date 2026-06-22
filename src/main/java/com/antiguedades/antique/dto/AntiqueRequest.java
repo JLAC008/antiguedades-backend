@@ -11,6 +11,7 @@ import java.util.List;
 public record AntiqueRequest(
     String catalogId,
     @NotBlank @Size(max = 200) String name,
+    Boolean allowDuplicateName,
     @NotNull AntiqueType type,
     @NotBlank @Size(max = 200) String subcategory,
     @NotBlank @Size(max = 200) String detail,

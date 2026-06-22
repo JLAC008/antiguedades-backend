@@ -19,6 +19,9 @@ public class Antique {
     @Column(nullable = false)
     private String name;
 
+    @Column(name = "allow_duplicate_name", nullable = false)
+    private boolean allowDuplicateName;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AntiqueType type;
@@ -90,6 +93,8 @@ public class Antique {
     public void setCatalogId(UUID catalogId) { this.catalogId = catalogId; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+    public boolean isAllowDuplicateName() { return allowDuplicateName; }
+    public void setAllowDuplicateName(boolean allowDuplicateName) { this.allowDuplicateName = allowDuplicateName; }
     public AntiqueType getType() { return type; }
     public void setType(AntiqueType type) { this.type = type; }
     public String getSubcategory() { return subcategory; }
