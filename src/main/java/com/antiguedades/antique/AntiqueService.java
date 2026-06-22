@@ -98,7 +98,7 @@ public class AntiqueService {
         antique.setAllowDuplicateName(Boolean.TRUE.equals(request.allowDuplicateName()));
         antique.setType(request.type());
         antique.setSubcategory(request.subcategory());
-        antique.setDetail(request.detail());
+        antique.setDetail(request.detail() != null ? request.detail().trim() : "");
         antique.setCountry(request.country());
         antique.setRegion(request.region());
         antique.setElement(request.element());

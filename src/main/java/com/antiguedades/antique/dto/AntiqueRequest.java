@@ -14,7 +14,7 @@ public record AntiqueRequest(
     Boolean allowDuplicateName,
     @NotNull AntiqueType type,
     @NotBlank @Size(max = 200) String subcategory,
-    @NotBlank @Size(max = 200) String detail,
+    @Size(max = 200) String detail,
     @Size(max = 200) String country,
     @Size(max = 200) String region,
     @Size(max = 200) String element,
