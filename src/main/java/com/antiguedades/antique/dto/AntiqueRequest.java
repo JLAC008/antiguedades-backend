@@ -28,7 +28,7 @@ public record AntiqueRequest(
     @Size(max = 100) String century,
     @Size(max = 2000) String description,
     @NotNull @DecimalMin(value = "0.01", message = "El precio debe ser mayor que 0") BigDecimal price,
-    @NotBlank @Size(max = 100) String yearEra,
+    @Size(max = 100) String yearEra,
     @NotBlank @Size(max = 50) String condition,
     @Size(max = 200) String material,
     @Size(max = 200) String dimensions,

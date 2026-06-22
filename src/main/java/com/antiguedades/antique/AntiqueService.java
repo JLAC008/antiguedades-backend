@@ -112,7 +112,7 @@ public class AntiqueService {
         antique.setCentury(request.century());
         antique.setDescription(request.description());
         antique.setPrice(request.price() != null ? request.price() : BigDecimal.ZERO);
-        antique.setYearEra(request.yearEra());
+        antique.setYearEra(request.yearEra() != null ? request.yearEra().trim() : "");
         antique.setCondition(request.condition());
         antique.setMaterial(request.material());
         antique.setDimensions(request.dimensions());
