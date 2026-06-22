@@ -6,6 +6,7 @@ import com.antiguedades.antique.dto.CountsResponse;
 import com.antiguedades.catalog.Catalog;
 import com.antiguedades.catalog.CatalogRepository;
 import com.antiguedades.catalog.dto.CatalogResponse;
+import com.antiguedades.exception.BusinessException;
 import com.antiguedades.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +53,7 @@ public class AntiqueService {
 
     @Transactional
     public AntiqueResponse create(AntiqueRequest request, String createdBy) {
+        validateUniqueName(request.name(), null);
         Antique antique = new Antique();
         applyRequest(antique, request);
         if (request.catalogId() != null && !request.catalogId().isBlank()) {
@@ -66,6 +68,7 @@ public class AntiqueService {
     public AntiqueResponse update(UUID id, AntiqueRequest request) {
         Antique antique = antiqueRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Pieza no encontrada"));
+        validateUniqueName(request.name(), id);
         applyRequest(antique, request);
         if (request.catalogId() != null && !request.catalogId().isBlank()) {
             antique.setCatalogId(UUID.fromString(request.catalogId()));
@@ -91,7 +94,7 @@ public class AntiqueService {
     }
 
     private void applyRequest(Antique antique, AntiqueRequest request) {
-        antique.setName(request.name());
+        antique.setName(request.name().trim());
         antique.setType(request.type());
         antique.setSubcategory(request.subcategory());
         antique.setDetail(request.detail());
@@ -116,6 +119,16 @@ public class AntiqueService {
         antique.setPaperFormat(request.paperFormat());
         antique.setPaperWeight(request.paperWeight());
         antique.setImages(request.images() != null ? request.images() : List.of());
+    }
+
+    private void validateUniqueName(String name, UUID currentId) {
+        String normalizedName = name.trim();
+        boolean duplicate = currentId == null
+            ? antiqueRepository.existsByNameIgnoreCase(normalizedName)
+            : antiqueRepository.existsByNameIgnoreCaseAndIdNot(normalizedName, currentId);
+        if (duplicate) {
+            throw new BusinessException("Ya existe una pieza con el nombre '" + normalizedName + "'.");
+        }
     }
 
     private AntiqueResponse toResponse(Antique antique) {

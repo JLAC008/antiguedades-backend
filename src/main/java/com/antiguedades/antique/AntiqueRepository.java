@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AntiqueRepository extends JpaRepository<Antique, UUID> {
+    boolean existsByNameIgnoreCase(String name);
+    boolean existsByNameIgnoreCaseAndIdNot(String name, UUID id);
+
     List<Antique> findByCatalogIdOrderByCreatedAtDesc(UUID catalogId);
 
     @Query("SELECT a FROM Antique a ORDER BY a.createdAt DESC")
