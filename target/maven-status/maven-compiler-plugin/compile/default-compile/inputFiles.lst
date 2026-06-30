@@ -11,6 +11,10 @@ C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedad
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\auth\AuthService.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\auth\dto\LoginRequest.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\auth\dto\LoginResponse.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\auth\InvalidCredentialsException.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\auth\LoginAttemptService.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\auth\LoginResult.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\auth\TooManyLoginAttemptsException.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\Catalog.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CatalogController.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\catalog\CatalogRepository.java
@@ -31,6 +35,7 @@ C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedad
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\FlywayConfig.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\JacksonConfig.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\SecurityConfig.java
+C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\SuperuserBootstrap.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\config\WebConfig.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\exception\BusinessException.java
 C:\sts-5.1.1.RELEASE\workspace\antiguedades-backend\src\main\java\com\antiguedades\exception\GlobalExceptionHandler.java

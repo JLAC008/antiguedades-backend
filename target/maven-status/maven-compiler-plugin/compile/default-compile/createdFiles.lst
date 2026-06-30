@@ -1,6 +1,7 @@
 com\antiguedades\config\WebConfig.class
 com\antiguedades\catalog\Category.class
 com\antiguedades\exception\GlobalExceptionHandler.class
+com\antiguedades\auth\InvalidCredentialsException.class
 com\antiguedades\auth\AuthService.class
 com\antiguedades\catalog\CatalogRepository.class
 com\antiguedades\exception\BusinessException.class
@@ -16,10 +17,12 @@ com\antiguedades\auth\dto\LoginRequest.class
 com\antiguedades\condition\ConditionService.class
 com\antiguedades\antique\dto\AntiqueRequest.class
 com\antiguedades\catalog\CategoryController.class
+com\antiguedades\auth\LoginAttemptService.class
 com\antiguedades\condition\Condition.class
 com\antiguedades\config\SecurityConfig.class
 com\antiguedades\condition\ConditionController.class
 com\antiguedades\config\JacksonConfig.class
+com\antiguedades\auth\TooManyLoginAttemptsException.class
 com\antiguedades\auth\AuthController.class
 com\antiguedades\auth\dto\LoginResponse.class
 com\antiguedades\catalog\dto\CategoryResponse$SubcategoryGroup.class
@@ -37,8 +40,11 @@ com\antiguedades\antique\dto\AntiqueResponse.class
 com\antiguedades\catalog\CategoryRepository.class
 com\antiguedades\config\FlywayConfig.class
 com\antiguedades\user\dto\CreateUserRequest.class
+com\antiguedades\auth\LoginResult.class
+com\antiguedades\auth\LoginAttemptService$AttemptState.class
 com\antiguedades\user\UserRole.class
 com\antiguedades\antique\Antique.class
+com\antiguedades\config\SuperuserBootstrap.class
 com\antiguedades\upload\FileUploadController.class
 com\antiguedades\exception\ResourceNotFoundException.class
 com\antiguedades\catalog\dto\CategoryResponse.class

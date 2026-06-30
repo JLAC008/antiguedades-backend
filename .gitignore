@@ -1,1 +1,29 @@
+# Secrets and local environment
 .env
+.env.*
+!.env.example
+
+# Maven output and bundled local runtime
+target/
+.maven/
+maven.zip
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+test_download.txt
+
+# IDE metadata
+.settings/
+.classpath
+.factorypath
+.project
+.idea/
+*.iml
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

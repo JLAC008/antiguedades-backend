@@ -59,7 +59,3 @@ CREATE TABLE antique_images (
     antique_id UUID NOT NULL REFERENCES antiques(id) ON DELETE CASCADE,
     image_url VARCHAR(500) NOT NULL
 );
-
--- Seed admin user
-INSERT INTO app_users (email, password, role, name) VALUES
-    ('admin@antiguedades.com', 'admin123', 'admin', 'Administrador');

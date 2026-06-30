@@ -11,13 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
 public class UserService {
-    private static final String SUPERUSER_EMAIL = "superusuario@gmail.com";
-
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -28,13 +25,14 @@ public class UserService {
 
     public List<UserResponse> getAllUsers() {
         return userRepository.findAll().stream()
-            .filter(user -> !isSuperuser(user))
+            .filter(user -> user.getRole() != UserRole.superuser)
             .map(this::toResponse)
-            .collect(Collectors.toList());
+            .toList();
     }
 
     @Transactional
     public UserResponse createUser(CreateUserRequest request) {
+        rejectSuperuserRole(request.role());
         if (userRepository.existsByEmailIgnoreCase(request.email())) {
             throw new BusinessException("Ya existe un usuario con ese correo");
         }
@@ -52,10 +50,8 @@ public class UserService {
     public UserResponse updateUser(UUID id, UpdateUserRequest request) {
         AppUser user = userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
-        if (isSuperuser(user)) {
-            throw new BusinessException("El superusuario solo se puede modificar desde base de datos");
-        }
-
+        rejectProtectedSuperuser(user);
+        rejectSuperuserRole(request.role());
         if (request.name() != null) user.setName(request.name().trim());
         if (request.email() != null) {
             var existing = userRepository.findByEmailIgnoreCase(request.email());
@@ -77,9 +73,7 @@ public class UserService {
     public void deleteUser(UUID id) {
         AppUser user = userRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
-        if (isSuperuser(user)) {
-            throw new BusinessException("El superusuario solo se puede eliminar desde base de datos");
-        }
+        rejectProtectedSuperuser(user);
         userRepository.delete(user);
     }
 
@@ -87,7 +81,15 @@ public class UserService {
         return new UserResponse(user.getId(), user.getEmail(), user.getRole(), user.getName(), user.getCreatedAt());
     }
 
-    private boolean isSuperuser(AppUser user) {
-        return user.getEmail() != null && user.getEmail().equalsIgnoreCase(SUPERUSER_EMAIL);
+    private void rejectProtectedSuperuser(AppUser user) {
+        if (user.getRole() == UserRole.superuser) {
+            throw new BusinessException("El superusuario se gestiona exclusivamente desde el entorno del servidor");
+        }
+    }
+
+    private void rejectSuperuserRole(UserRole role) {
+        if (role == UserRole.superuser) {
+            throw new BusinessException("No se puede asignar el rol de superusuario desde la aplicación");
+        }
     }
 }

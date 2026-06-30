@@ -1,0 +1,8 @@
+target
+.maven
+.mvn
+.git
+.env
+*.log
+maven.zip
+
