@@ -2,6 +2,9 @@ server:
   port: 8081
 
 spring:
+  docker:
+    compose:
+      lifecycle-management: start-only
   jackson:
     property-naming-strategy: SNAKE_CASE
   datasource:
@@ -26,8 +29,8 @@ app:
   upload:
     dir: ${UPLOAD_DIR}
   admin:
-    username: ${ADMIN_USERNAME}
-    password: ${ADMIN_PASSWORD}
+    username: ${SUPERUSER_USERNAME}
+    password: ${SUPERUSER_PASSWORD}
   jwt:
     secret: ${JWT_SECRET}
     expiration-ms: 86400000

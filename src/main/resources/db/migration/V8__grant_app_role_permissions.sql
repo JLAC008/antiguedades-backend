@@ -1,0 +1,8 @@
+GRANT USAGE ON SCHEMA public TO antiguedades_app;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO antiguedades_app;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO antiguedades_app;
+
+ALTER DEFAULT PRIVILEGES FOR ROLE antiguedades_migrator IN SCHEMA public
+    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO antiguedades_app;
+ALTER DEFAULT PRIVILEGES FOR ROLE antiguedades_migrator IN SCHEMA public
+    GRANT USAGE, SELECT ON SEQUENCES TO antiguedades_app;
