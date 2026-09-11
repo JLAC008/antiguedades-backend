@@ -62,6 +62,10 @@ public class Antique {
     @Column(nullable = false)
     private String condition;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private AntiqueStatus status;
+
     private String material;
     private String dimensions;
 
@@ -131,6 +135,8 @@ public class Antique {
     public void setYearEra(String yearEra) { this.yearEra = yearEra; }
     public String getCondition() { return condition; }
     public void setCondition(String condition) { this.condition = condition; }
+    public AntiqueStatus getStatus() { return status; }
+    public void setStatus(AntiqueStatus status) { this.status = status; }
     public String getMaterial() { return material; }
     public void setMaterial(String material) { this.material = material; }
     public String getDimensions() { return dimensions; }

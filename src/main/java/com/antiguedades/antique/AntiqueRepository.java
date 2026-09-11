@@ -24,12 +24,14 @@ public interface AntiqueRepository extends JpaRepository<Antique, UUID> {
            "AND (:subcategory IS NULL OR a.subcategory = :subcategory) " +
            "AND (:detail IS NULL OR a.detail = :detail) " +
            "AND (:condition IS NULL OR a.condition = :condition) " +
+           "AND (:status IS NULL OR a.status = :status) " +
            "ORDER BY a.createdAt DESC")
     List<Antique> search(@Param("search") String search,
                          @Param("type") AntiqueType type,
                          @Param("subcategory") String subcategory,
                          @Param("detail") String detail,
-                         @Param("condition") String condition);
+                         @Param("condition") String condition,
+                         @Param("status") AntiqueStatus status);
 
     long countByType(AntiqueType type);
     long countByCatalogId(UUID catalogId);

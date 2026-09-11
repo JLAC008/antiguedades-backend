@@ -1,6 +1,7 @@
 package com.antiguedades.antique.dto;
 
 import com.antiguedades.antique.AntiqueType;
+import com.antiguedades.antique.AntiqueStatus;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +31,7 @@ public record AntiqueRequest(
     @NotNull @DecimalMin(value = "0.01", message = "El precio debe ser mayor que 0") BigDecimal price,
     @Size(max = 100) String yearEra,
     @NotBlank @Size(max = 50) String condition,
+    AntiqueStatus status,
     @Size(max = 200) String material,
     @Size(max = 200) String dimensions,
     @Size(max = 100) String paperType,

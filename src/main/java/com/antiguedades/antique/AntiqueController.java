@@ -28,8 +28,9 @@ public class AntiqueController {
             @RequestParam(required = false) AntiqueType type,
             @RequestParam(required = false) String subcategory,
             @RequestParam(required = false) String detail,
-            @RequestParam(required = false) String condition) {
-        return ResponseEntity.ok(antiqueService.getAll(search, type, subcategory, detail, condition));
+            @RequestParam(required = false) String condition,
+            @RequestParam(required = false) AntiqueStatus status) {
+        return ResponseEntity.ok(antiqueService.getAll(search, type, subcategory, detail, condition, status));
     }
 
     @GetMapping("/{id}")

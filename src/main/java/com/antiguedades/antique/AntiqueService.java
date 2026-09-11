@@ -28,9 +28,9 @@ public class AntiqueService {
     }
 
     public List<AntiqueResponse> getAll(String search, AntiqueType type, String subcategory,
-                                        String detail, String condition) {
-        if (search != null || type != null || subcategory != null || detail != null || condition != null) {
-            return antiqueRepository.search(search, type, subcategory, detail, condition).stream()
+                                        String detail, String condition, AntiqueStatus status) {
+        if (search != null || type != null || subcategory != null || detail != null || condition != null || status != null) {
+            return antiqueRepository.search(search, type, subcategory, detail, condition, status).stream()
                 .map(this::toResponse)
                 .collect(Collectors.toList());
         }
@@ -114,6 +114,7 @@ public class AntiqueService {
         antique.setPrice(request.price() != null ? request.price() : BigDecimal.ZERO);
         antique.setYearEra(request.yearEra() != null ? request.yearEra().trim() : "");
         antique.setCondition(request.condition());
+        antique.setStatus(request.status());
         antique.setMaterial(request.material());
         antique.setDimensions(request.dimensions());
         antique.setPaperType(request.paperType());
@@ -147,7 +148,7 @@ public class AntiqueService {
             antique.getSubcategory(), antique.getDetail(), antique.getCountry(), antique.getRegion(), antique.getElement(),
             antique.getTitle(), antique.getAuthor(), antique.getEditor(), antique.getImprenta(),
             antique.getEdition(), antique.getSignature(), antique.getTheme(), antique.getCentury(),
-            antique.getDescription(), antique.getPrice(), antique.getYearEra(), antique.getCondition(),
+            antique.getDescription(), antique.getPrice(), antique.getYearEra(), antique.getCondition(), antique.getStatus(),
             antique.getMaterial(), antique.getDimensions(),
             antique.getPaperType(), antique.getPaperFormat(), antique.getPaperWeight(),
             antique.getImages(), antique.getCreatedBy(), antique.getCreatedAt(),
