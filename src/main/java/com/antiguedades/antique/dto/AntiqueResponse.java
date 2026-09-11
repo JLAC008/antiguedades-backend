@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public record AntiqueResponse(
-    UUID id, UUID catalogId, String name, boolean allowDuplicateName, AntiqueType type,
+    UUID id, Long lotNumber, UUID catalogId, String name, boolean allowDuplicateName, AntiqueType type,
     String subcategory, String detail, String country, String region, String element,
     String title, String author, String editor, String imprenta, String edition,
     String signature, String theme, String century, String description,

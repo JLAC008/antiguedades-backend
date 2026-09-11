@@ -13,6 +13,9 @@ public class Antique {
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name = "lot_number", nullable = false, unique = true, updatable = false)
+    private Long lotNumber;
+
     @Column(name = "catalog_id")
     private UUID catalogId;
 
@@ -93,6 +96,8 @@ public class Antique {
 
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
+    public Long getLotNumber() { return lotNumber; }
+    public void setLotNumber(Long lotNumber) { this.lotNumber = lotNumber; }
     public UUID getCatalogId() { return catalogId; }
     public void setCatalogId(UUID catalogId) { this.catalogId = catalogId; }
     public String getName() { return name; }

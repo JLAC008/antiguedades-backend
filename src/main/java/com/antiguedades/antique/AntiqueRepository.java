@@ -33,6 +33,9 @@ public interface AntiqueRepository extends JpaRepository<Antique, UUID> {
                          @Param("condition") String condition,
                          @Param("status") AntiqueStatus status);
 
+    @Query(value = "SELECT nextval('antique_lot_number_seq')", nativeQuery = true)
+    Long nextLotNumber();
+
     long countByType(AntiqueType type);
     long countByCatalogId(UUID catalogId);
 }

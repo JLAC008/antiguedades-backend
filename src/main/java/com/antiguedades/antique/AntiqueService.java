@@ -59,6 +59,7 @@ public class AntiqueService {
         if (request.catalogId() != null && !request.catalogId().isBlank()) {
             antique.setCatalogId(UUID.fromString(request.catalogId()));
         }
+        antique.setLotNumber(antiqueRepository.nextLotNumber());
         antique.setCreatedBy(createdBy);
         antique = antiqueRepository.save(antique);
         return toResponse(antique);
@@ -144,7 +145,7 @@ public class AntiqueService {
                 .orElse(null)
             : null;
         return new AntiqueResponse(
-            antique.getId(), antique.getCatalogId(), antique.getName(), antique.isAllowDuplicateName(), antique.getType(),
+            antique.getId(), antique.getLotNumber(), antique.getCatalogId(), antique.getName(), antique.isAllowDuplicateName(), antique.getType(),
             antique.getSubcategory(), antique.getDetail(), antique.getCountry(), antique.getRegion(), antique.getElement(),
             antique.getTitle(), antique.getAuthor(), antique.getEditor(), antique.getImprenta(),
             antique.getEdition(), antique.getSignature(), antique.getTheme(), antique.getCentury(),
