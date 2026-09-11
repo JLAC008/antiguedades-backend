@@ -1,1 +1,38 @@
+# Secrets and local environment
 .env
+.env.*
+!.env.example
+token.txt
+
+# Maven / Spring Boot output
+target/
+*.jar
+*.war
+*.ear
+*.class
+
+# Runtime data
+uploads/
+logs/
+*.log
+*.tmp
+*.temp
+test_download.txt
+
+# Local agent metadata
+.agents/
+skills-lock.json
+
+# IDE metadata
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.factorypath
+.project
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
