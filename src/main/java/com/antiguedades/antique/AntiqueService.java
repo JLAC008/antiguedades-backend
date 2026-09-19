@@ -86,6 +86,14 @@ public class AntiqueService {
     }
 
     @Transactional
+    public AntiqueResponse updateStatus(UUID id, AntiqueStatus status) {
+        Antique antique = antiqueRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Pieza no encontrada"));
+        antique.setStatus(status);
+        return toResponse(antiqueRepository.save(antique));
+    }
+
+    @Transactional
     public void delete(UUID id) {
         if (!antiqueRepository.existsById(id)) {
             throw new ResourceNotFoundException("Pieza no encontrada");

@@ -2,6 +2,7 @@ package com.antiguedades.antique;
 
 import com.antiguedades.antique.dto.AntiqueRequest;
 import com.antiguedades.antique.dto.AntiqueResponse;
+import com.antiguedades.antique.dto.AntiqueStatusRequest;
 import com.antiguedades.antique.dto.CountsResponse;
 import com.antiguedades.security.JwtUserDetails;
 import jakarta.validation.Valid;
@@ -56,6 +57,13 @@ public class AntiqueController {
             @PathVariable UUID id,
             @Valid @RequestBody AntiqueRequest request) {
         return ResponseEntity.ok(antiqueService.update(id, request));
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<AntiqueResponse> updateStatus(
+            @PathVariable UUID id,
+            @Valid @RequestBody AntiqueStatusRequest request) {
+        return ResponseEntity.ok(antiqueService.updateStatus(id, request.status()));
     }
 
     @DeleteMapping("/{id}")

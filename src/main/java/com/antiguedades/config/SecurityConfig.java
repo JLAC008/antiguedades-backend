@@ -41,6 +41,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/uploads/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers(HttpMethod.PATCH, "/api/antiques/*/status").hasAnyRole("admin", "superuser")
                 .requestMatchers(HttpMethod.GET, "/api/antiques/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/catalogs/**").permitAll()
                 .requestMatchers("/api/admin/**").authenticated()
