@@ -1,5 +1,5 @@
 package com.antiguedades.antique;
 
 public enum AntiqueStatus {
-    reservado, pagado, vendido, enviado
+    reservado, pagado, enviado
 }
