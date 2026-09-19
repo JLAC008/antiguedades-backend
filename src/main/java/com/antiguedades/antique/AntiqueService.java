@@ -29,6 +29,11 @@ public class AntiqueService {
 
     public List<AntiqueResponse> getAll(String search, AntiqueType type, String subcategory,
                                         String detail, String condition, AntiqueStatus status) {
+        if (status != null && search == null && type == null && subcategory == null && detail == null && condition == null) {
+            return antiqueRepository.findByStatusOrderByCreatedAtDesc(status).stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
+        }
         if (search != null || type != null || subcategory != null || detail != null || condition != null || status != null) {
             return antiqueRepository.search(search, type, subcategory, detail, condition, status).stream()
                 .map(this::toResponse)
